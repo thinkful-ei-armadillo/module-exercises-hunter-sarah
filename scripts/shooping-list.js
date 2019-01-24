@@ -57,12 +57,12 @@ const shoppingList = (function(){
   function addItemToShoppingList(itemName) {
     store.items.push({ id: cuid(), name: itemName, checked: false });
     try{
-      Item.validateName
-      Item.create
+      Item.validateName;
+      Item.create;
       store.items.push();
     }
-    catch{
-      console.log('Cannot add item:{error.message}');
+    catch(error) {
+      console.log('Cannot add item:', error.message);
     }
   }
   
@@ -91,7 +91,7 @@ const shoppingList = (function(){
   function handleItemCheckClicked() {
     $('.js-shopping-list').on('click', '.js-item-toggle', event => {
       const id = getItemIdFromElement(event.currentTarget);
-      toggleCheckedForListItem(id);
+      store.findAndToggleChecked(id);
       render();
     });
   }
@@ -121,7 +121,7 @@ const shoppingList = (function(){
       // get the index of the item in store.items
       const id = getItemIdFromElement(event.currentTarget);
       // delete the item
-      deleteListItem(id);
+      store.findAndDelete(id);
       // render the updated shopping list
       render();
     });
@@ -132,7 +132,7 @@ const shoppingList = (function(){
       event.preventDefault();
       const id = getItemIdFromElement(event.currentTarget);
       const itemName = $(event.currentTarget).find('.shopping-item').val();
-      editListItemName(id, itemName);
+      store.findAndUpdateName(id, itemName);
       render();
     });
   }
