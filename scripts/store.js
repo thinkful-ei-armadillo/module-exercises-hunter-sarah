@@ -47,6 +47,14 @@ const store= (function() {
     }
   }
 
+  function toggleCheckedFilter(){
+    findAndToggleChecked(this.hideCheckedItems);
+  }
+
+  function setSearchTerm(param){
+    this.searchTerm = param;
+  }
+
   return { 
     items: items,
     hideCheckedItems: hideCheckedItems,
@@ -55,6 +63,8 @@ const store= (function() {
     findAndUpdateName: findAndUpdateName,
     findAndToggleChecked: findAndToggleChecked,
     findAndDelete: findAndDelete,
-    addItem: addItem
+    addItem: addItem,
+    toggleCheckedFilter: toggleCheckedFilter,
+    setSearchTerm: setSearchTerm
   };
 } () );
