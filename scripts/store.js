@@ -1,8 +1,7 @@
-
+'use strict';
 
 const store= (function() {
-const foo = 'bar';
- const items = [
+  const items = [
     { id: cuid(), name: 'apples', checked: false },
     { id: cuid(), name: 'oranges', checked: false },
     { id: cuid(), name: 'milk', checked: true },
@@ -11,12 +10,9 @@ const foo = 'bar';
   let hideCheckedItems = false;
   let searchTerm ='';
  
-    return { 
+  return { 
     items: items,
     hideCheckedItems: hideCheckedItems,
     searchTerm: searchTerm,
-};
+  };
 } () );
-
-console.log(store);
-console.log(foo);
